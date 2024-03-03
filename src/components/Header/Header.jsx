@@ -1,23 +1,4 @@
 import React from "react";
-// export default function Header(){
-//   return(
-//     <div className="flex justify-between px-6 py-5 bg-zinc-500 text-white sticky items-center">
-//       <div className="Logo">
-//          Logo
-//       </div>
-//       <div className="font-titlefamily">
-//         <h3>
-//             MediGPT
-//         </h3>
-//       </div>
-//       <div>
-//         <button className="rounded-md bg-red-400 px-2 py-1">Logout</button>
-//       </div>
-//     </div>
-    
-//   )
-// }
-// import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -25,13 +6,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import List from '@mui/material/List';
+// import ListItem from '@mui/material/ListItem';
+// import ListItemButton from '@mui/material/ListItemButton';
+// import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemText from '@mui/material/ListItemText';
+// import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -62,8 +43,8 @@ function Header(props) {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+      {/* <List>
+        {['Home', 'Doctor', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -73,20 +54,13 @@ function Header(props) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      </List> */}
+      <div className="flex flex-col">
+        <a href="#" className="">Home</a>
+        <a href="#" className="">Doctors</a>
+        <button className="">Log Out</button>
+      </div>
+
     </div>
   );
 
