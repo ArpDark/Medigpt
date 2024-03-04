@@ -7,8 +7,8 @@ export default function Doctors(){
   <div className="card min-h-[100px] rounded-lg shadow-xl">
     <div className="rounded-lg p-1 flex-col items-center">
 <div className="m-4 grid gap-4 grid-cols-7">
-  <div className="card-image min-h-[100px] rounded-lg col-span-2">
-    <img className="w-full h-full object-cover overflow-hidden"
+  <div className="card-image min-h-[100px] rounded-lg col-span-2 overflow-hidden">
+    <img className="w-full h-full object-cover"
      src="https://th.bing.com/th/id/OIP.IoUmyjrf4VaXudyiVqv2WwHaII?rs=1&pid=ImgDetMain"></img>
   </div>
   <div className="card-description min-h-[100px] rounded-lg col-span-5">
@@ -26,8 +26,8 @@ export default function Doctors(){
   <div className="card min-h-[100px] rounded-lg shadow-xl">
         <div className="rounded-lg p-1 flex-col items-center">
 <div className="m-4 grid gap-4 grid-cols-7">
-  <div className="card-image min-h-[100px] rounded-lg col-span-2">
-  <img className="w-full h-full object-cover overflow-hidden"
+  <div className="card-image min-h-[100px] rounded-lg col-span-2 overflow-hidden">
+  <img className="w-full h-full object-cover"
      src="https://th.bing.com/th/id/OIP.oH4ileG06OY56e7oszwQ8AHaHa?w=768&h=768&rs=1&pid=ImgDetMain"></img>
   </div>
   <div className="card-description min-h-[100px] rounded-lg col-span-5">
@@ -45,8 +45,8 @@ export default function Doctors(){
   <div className="card min-h-[100px] rounded-lg shadow-xl">
             <div className="rounded-lg p-1 flex-col items-center">
 <div className="m-4 grid gap-4 grid-cols-7">
-  <div className="card-image min-h-[100px] rounded-lg col-span-2">
-  <img className="w-full h-full object-cover overflow-hidden"
+  <div className="card-image min-h-[100px] rounded-lg col-span-2 overflow-hidden">
+  <img className="w-full h-full object-cover"
      src="https://th.bing.com/th/id/OIP.UYf9VOXnrtW-OZwkbWbj4wHaHa?w=512&h=512&rs=1&pid=ImgDetMain"></img>
   </div>
   <div className="card-description min-h-[100px] rounded-lg col-span-5">
