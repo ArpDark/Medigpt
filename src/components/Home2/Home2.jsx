@@ -1,4 +1,23 @@
 import React from "react";
+// export default function Header(){
+//   return(
+//     <div className="flex justify-between px-6 py-5 bg-zinc-500 text-white sticky items-center">
+//       <div className="Logo">
+//          Logo
+//       </div>
+//       <div className="font-titlefamily">
+//         <h3>
+//             MediGPT
+//         </h3>
+//       </div>
+//       <div>
+//         <button className="rounded-md bg-red-400 px-2 py-1">Logout</button>
+//       </div>
+//     </div>
+    
+//   )
+// }
+// import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,20 +25,21 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import MailIcon from '@mui/icons-material/Mail';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 const drawerWidth = 240;
 
-function Header(props) {
+function Home2(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -43,8 +63,8 @@ function Header(props) {
     <div>
       <Toolbar />
       <Divider />
-      {/* <List>
-        {['Home', 'Doctor', 'Send email', 'Drafts'].map((text, index) => (
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -54,13 +74,20 @@ function Header(props) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List> */}
-      <div className="flex flex-col">
-        <a href="#" className="">Home</a>
-        <a href="#" className="">Doctors</a>
-        <button className="">Log Out</button>
-      </div>
-
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </div>
   );
 
@@ -125,44 +152,32 @@ function Header(props) {
           {drawer}
         </Drawer>
       </Box>
-      {/* <Box
+      <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
+        <Typography div>
+        <div className="flex flex-col justify-center items-center bg-slate-200 h-[100vh]">
+    <div className="flex w-[75%]  flex-col items-center justify-center">
+        <h1 className="text-center">Enter Synptoms</h1>
+        <TextField fullWidth label="synptoms" id="fullWidth" />
+        <div className="m-5">
+        <Button  variant="contained">Predict</Button>
+        </div>
+    </div>
+    <div className="m-5">
+       <h2 className="text-center">You may have diabetes as predicted deasease</h2>
+    </div>
+    <div className="flex w-[80%] flex-col items-center justify-center"></div>
+</div>
         </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-      </Box> */}
+      </Box>
     </Box>
   );
 }
 
-Header.propTypes = {
+Home2.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * Remove this when copying and pasting into your project.
@@ -170,4 +185,4 @@ Header.propTypes = {
   window: PropTypes.func,
 };
 
-export default Header;
+export default Home2;
