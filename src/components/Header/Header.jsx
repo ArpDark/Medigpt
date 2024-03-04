@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
+import { Link, NavLink } from "react-router-dom";
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import List from '@mui/material/List';
 // import ListItem from '@mui/material/ListItem';
@@ -56,9 +57,11 @@ function Header(props) {
         ))}
       </List> */}
       <div className="flex flex-col">
-        <a href="#" className="">Home</a>
-        <a href="#" className="">Doctors</a>
-        <button className="">Log Out</button>
+        <NavLink to="/home" className={({ isActive }) =>
+          `text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none ${isActive ? "text-orange-700" : "text-gray-700"}`
+        } style={{ textDecoration: 'none' }}>Home</NavLink>
+        <Link className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none" style={{ textDecoration: 'none' }}>Doctors</Link>
+        <Link to="/" className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none" style={{ textDecoration: 'none' }}>LogOut</Link>
       </div>
 
     </div>
@@ -68,14 +71,14 @@ function Header(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex'}}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
-        // sx={{
-        //   width: { sm: `calc(100% - ${drawerWidth}px)` },
-        //   ml: { sm: `${drawerWidth}px` },
-        // }}
+      // sx={{
+      //   width: { sm: `calc(100% - ${drawerWidth}px)` },
+      //   ml: { sm: `${drawerWidth}px` },
+      // }}
       >
         <Toolbar>
           <IconButton
@@ -84,7 +87,7 @@ function Header(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2 }}
-            // sx={{ mr: 2, display: { sm: 'none' } }}
+          // sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
