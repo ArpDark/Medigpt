@@ -6,12 +6,14 @@ import Landing from './components/Landing/Landing';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Layout from './Layout';
 import Home from './components/Home/Home';
+import Doctors from './components/Doctors/Doctors';
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route>
     <Route path='/' element={<Layout/>}>
     <Route path='' element={<Landing/>}/>
     <Route path='home' element={<Home/>} />
+    <Route path='doctors' element={<Doctors/>} />
     </Route>
     <Route path='/signup' element={<SignUp/>}/>
     <Route path='/signin' element={<Signin/>}/>
