@@ -6,7 +6,6 @@ import Landing from './components/Landing/Landing';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Layout from './Layout';
 import Home from './components/Home/Home';
-import Home2 from './components/Home2/Home2';
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -16,8 +15,6 @@ const router=createBrowserRouter(
     </Route>
     <Route path='/signup' element={<SignUp/>}/>
     <Route path='/signin' element={<Signin/>}/>
-    <Route path='/header' element={<Header/>}/>
-    <Route path='/homeee' element={<Home2/>}/>
     </Route>
   )
 )
