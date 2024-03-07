@@ -5,8 +5,8 @@ export default function Home() {
   return(
     <div className="flex flex-col z-auto justify-center items-center bg-slate-200 h-[100vh] w-full">
     <div className="flex w-[75%]  flex-col items-center justify-center">
-        <h1 className="text-center">Enter Synptoms</h1>
-        <TextField fullWidth label="synptoms" id="fullWidth" />
+        <h1 className="text-center">Enter Symptoms</h1>
+        <TextField fullWidth label="symptoms" id="fullWidth" />
         <div className="m-5">
         <Button  variant="contained">Predict</Button>
         </div>
