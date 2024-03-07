@@ -2,8 +2,8 @@ import React from "react";
 import Button from '@mui/material/Button';
 export default function Doctors(){
     return(
-        <div className="mainscreen bg-slate-200 h-[100vh] w-full z-auto mt-20">
- <div className="cards m-4 grid gap-4 sm:grid-cols-3 mt-2">
+        <div className="mainscreen bg-slate-200 min-h-screen w-full z-auto">
+ <div className="cards m-4 grid gap-4 sm:grid-cols-3 mt-16">
   <div className="card min-h-[100px] rounded-lg shadow-xl">
     <div className="rounded-lg p-1 flex-col items-center">
 <div className="m-4 grid gap-4 grid-cols-7">
