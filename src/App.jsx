@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './components/Header/Header';
 import Signin from './components/Signin/Signin';
 import SignUp from './components/SignUp/SignUp';
 import Landing from './components/Landing/Landing';

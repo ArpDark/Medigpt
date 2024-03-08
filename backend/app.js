@@ -1,6 +1,10 @@
 import dotenv from "dotenv";
 import express  from "express";
+import mongoose from 'mongoose';
 import bodyParser from "body-parser";
+import session from "express-session";
+import passport from "passport";
+import passportLocalMongoose from 'passport-local-mongoose';
 import cors from "cors";
 dotenv.config();
 const port=process.env.PORT||8000;
@@ -31,7 +35,7 @@ app.use(passport.session());
 
 
 mongoose.set("strictQuery",false);
-mongoose.connect("mongodb+srv://"+process.env.MONGODB_UID+":"+process.env.MONGODB_UID+"@cluster0.5on0u08.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://"+process.env.MONGODB_UID+":"+process.env.MONGODB_PWD+"@cluster0.5on0u08.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 const userSchema=new mongoose.Schema({
     username: {type:String,unique:true},
@@ -57,6 +61,10 @@ passport.deserializeUser(function(user, cb) {
   });
 });
 
+
+app.get("/",(req,res)=>{
+  res.send("Hello World");
+});
 
 app.post("/register",(req,res)=>{
     User.register({username:req.body.username,email:req.body.email},req.body.password,(err,user)=>{
