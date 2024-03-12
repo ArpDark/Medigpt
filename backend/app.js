@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+ import dotenv from "dotenv";
 import express  from "express";
 import mongoose from 'mongoose';
 import bodyParser from "body-parser";
@@ -6,6 +6,8 @@ import session from "express-session";
 import passport from "passport";
 import passportLocalMongoose from 'passport-local-mongoose';
 import cors from "cors";
+import jwt from "jsonwebtoken";
+import {jwtDecode} from "jwt-decode";
 dotenv.config();
 const port=process.env.PORT||8000;
 
@@ -26,7 +28,7 @@ app.use(session({
     resave:false,
     saveUninitialized:true,
     cookie:{
-      maxAge:50000,
+      maxAge:500000000,
     }
 }));
 
@@ -39,7 +41,9 @@ mongoose.connect("mongodb+srv://"+process.env.MONGODB_UID+":"+process.env.MONGOD
 
 const userSchema=new mongoose.Schema({
     username: {type:String,unique:true},
-    email: {type:String,unique:true},
+    name: {type:String},
+    token:{default:" ",type:String},
+    // token:{default:" ",type:String,unique:true},
     password: String,
 });
 
@@ -62,58 +66,78 @@ passport.deserializeUser(function(user, cb) {
 });
 
 
-app.get("/",(req,res)=>{
-  res.send("Hello World");
-});
+// app.get("/",(req,res)=>{
+//   jwt.sign({ email: 'aritrapal073@gmail.com' }, process.env.JWT_KEY, function(err, token) {
+//     if(err)
+//     {
+//       console.log(err);
+//     }
+//     else
+//     {
+//       console.log(token);
+//       const decode=jwt.decode(token, process.env.JWT_KEY);
+//       console.log(decode);
+//     }
+//   });
+//   res.send("Hello World");
+// });
 
 app.post("/register",(req,res)=>{
-    User.register({username:req.body.username,email:req.body.email},req.body.password,(err,user)=>{
+    User.register({username:req.body.email,name:req.body.name},req.body.password,(err,user)=>{
         if(err)
         {
-          console.log(err);
+          // console.log(err);
           res.send(err);
         }
         else
         {
-          passport.authenticate("local")(req,res,()=>{
-            req.session.user = user.username;
-            req.session.save((err)=>{
-              if(err)
-              {
-                  console.log(err);
-                  res.send(err);
-              }
-              else
-              {
-                  res.send(req.body);
-              }
-            });
+
+          // passport.authenticate('local', function(err, user, info, status) {
+          //   if (err) { console.log(err); }
+          //   if (!user) { console.log("no user"); }
+          // })(req, res);
+
+
+          user.save();
+          
+          jwt.sign({ email: req.body.email }, process.env.JWT_KEY, async(err, token)=> {
+            if(err)
+            {
+              // console.log(err);
+              res.send(err);
+            }
+            else
+            {
+              // console.log(req.body.email);
+              // console.log(token);
+              await User.findOneAndUpdate({username:req.body.email},{token:token},{returnOriginal:false}).then((e)=>{console.log(e);});
+              res.send(token);
+            }
           });
         }
     });
 });
 app.post("/login",(req,res)=>{
-    const user=new User({
-        username:req.body.username,
-        password:req.body.password
-    });
-    req.login(user,(err)=>{
-      if(err)
+    passport.authenticate("local")(req,res,()=>{
+      jwt.sign({ email: req.body.username }, process.env.JWT_KEY, async(err, token)=> {
+        if(err)
         {
-          throw err;
+          // console.log(err);
+          res.send(err);
         }
         else
         {
-            passport.authenticate("local")(req,res,()=>{
-                req.session.user = user.username;
-                req.session.save((err)=>{
-                  res.send(req.body);
-                });
-            });
+          console.log(jwtDecode(token));
+          // console.log(req.body.email);
+          // console.log(token);
+          await User.findOneAndUpdate({username:req.body.email},{token:token},{returnOriginal:false}).then((e)=>{console.log(e);});
+          res.send(token);
         }
+      });
     });
+
 });
 
 app.listen(port,()=>{
-    console.log("Server started at port"+port);
-})
+    console.log("Server started at port :"+port);
+});
