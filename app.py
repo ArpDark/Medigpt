@@ -39,9 +39,9 @@ def predict():
     x=cv.fit_transform(x).toarray()
     prediction = model.predict(cv.transform(symptoms).toarray())
     prediction = prediction.tolist()[0]
-    print(prediction)
-    print(type(symptoms))
-    print(np.array(symptoms))
+    # print(prediction)
+    # print(type(symptoms))
+    # print(np.array(symptoms))
     # Return the prediction as JSON
     return jsonify({'prediction': prediction})
     # return jsonify({'prediction': symptoms})
