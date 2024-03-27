@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './components/Header/Header';
 import Signin from './components/Signin/Signin';
 import SignUp from './components/SignUp/SignUp';
 import Landing from './components/Landing/Landing';
@@ -10,11 +9,11 @@ import Doctors from './components/Doctors/Doctors';
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route>
-    <Route path='/' element={<Layout/>}>
-    <Route path='' element={<Landing/>}/>
-    <Route path='home' element={<Home/>} />
+    <Route path='/home' element={<Layout/>}>
+    <Route path='' element={<Home/>} />
     <Route path='doctors' element={<Doctors/>} />
     </Route>
+    <Route path='/' element={<Landing/>}/>
     <Route path='/signup' element={<SignUp/>}/>
     <Route path='/signin' element={<Signin/>}/>
     </Route>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,17 +6,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import { Link, NavLink } from "react-router-dom";
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import MailIcon from '@mui/icons-material/Mail';
+import { Link, NavLink,useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import {jwtDecode} from "jwt-decode";
 
 const drawerWidth = 240;
 
@@ -24,6 +18,9 @@ function Header(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const navigate=useNavigate();
+
+  
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -39,6 +36,11 @@ function Header(props) {
       setMobileOpen(!mobileOpen);
     }
   };
+
+  const handleLogOut=()=>{
+    localStorage.clear();
+    navigate("/signin");
+  }
 
   const drawer = (
     <div>
@@ -60,10 +62,10 @@ function Header(props) {
         <NavLink to="/home" className={({ isActive }) =>
           `text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none ${isActive ? "text-orange-700" : "text-gray-700"}`
         } style={{ textDecoration: 'none' }}>Home</NavLink>
-        <NavLink to="/doctors" className={({ isActive }) =>
+        <NavLink to="/home/doctors" className={({ isActive }) =>
           `text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none ${isActive ? "text-orange-700" : "text-gray-700"}`
         } style={{ textDecoration: 'none' }}>Doctors</NavLink>
-        <Link to="/" className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none" style={{ textDecoration: 'none' }}>LogOut</Link>
+        <button onClick={handleLogOut} className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none" style={{ textDecoration: 'none' }}>Log Out</button>
       </div>
 
     </div>
@@ -135,12 +137,12 @@ function Header(props) {
   );
 }
 
-Header.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window: PropTypes.func,
-};
+// Header.propTypes = {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * Remove this when copying and pasting into your project.
+//    */
+//   window: PropTypes.func,
+// };
 
 export default Header;
